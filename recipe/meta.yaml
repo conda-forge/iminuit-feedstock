@@ -1,7 +1,7 @@
 {% set name = "iminuit" %}
-{% set version = "1.2" %}
+{% set version = "1.3" %}
 {% set hash_type = "sha256" %}
-{% set hash_value = "7651105fc3f186cfb5742f075ffebcc5088bf7797d8ed124c00977eebe0d1c64" %}
+{% set hash_value = "b96d526a17f491f0a5c87827099abd63bd1f312e275cc9f738f99e7e69f4a165" %}
 
 package:
   name: '{{ name|lower }}'
