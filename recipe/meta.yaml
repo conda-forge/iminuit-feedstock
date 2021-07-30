@@ -1,3 +1,4 @@
+
 {% set name = "iminuit" %}
 {% set version = "2.7.0" %}
 
