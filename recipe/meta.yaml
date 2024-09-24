@@ -1,5 +1,5 @@
 {% set name = "iminuit" %}
-{% set version = "2.29.1" %}
+{% set version = "2.30.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 474d10eb2f924b9320f6f7093e4c149d0a38c124d0419c12a07a3eca942de025
+  sha256: 8de0b82bb6b3381165b38e95761a0270189a0083cdb92e154df1657ec6519a40
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py<39]
   script:
     - export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}                  # [unix]
