@@ -1,5 +1,5 @@
 {% set name = "iminuit" %}
-{% set version = "2.30.0" %}
+{% set version = "2.30.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8de0b82bb6b3381165b38e95761a0270189a0083cdb92e154df1657ec6519a40
+  sha256: 2815bfdeb8e7f78185f316b75e2d4b19d0f6993bdc5ff03352ed37b70a796360
 
 build:
   number: 0
@@ -15,7 +15,10 @@ build:
   script:
     - export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}                  # [unix]
     - set CMAKE_BUILD_PARALLEL_LEVEL=%CPU_COUNT%                      # [win]
-    - {{ PYTHON }} -m pip install . -vv
+    - python -m scikit_build_core.builder.wheel_tag
+    - python -c "import packaging.tags; print(*packaging.tags.sys_tags())"
+    - exit 1
+    - {{ PYTHON }} -m pip install . -vv -Ccmake.verbose=true -Clogging.level=DEBUG
 
 requirements:
   build:
@@ -46,7 +49,10 @@ test:
     - iminuit
   commands:
     - python -m pytest tests
-    - pip check
+    - python -c "import packaging.tags; print(*packaging.tags.sys_tags())"
+    - cat $(python -c 'import sysconfig; print(sysconfig.get_paths()["platlib"])')/iminuit-*/WHEEL
+    - python -m pip debug --verbose
+    - python -m pip check
 
 about:
   home: https://github.com/scikit-hep/iminuit
