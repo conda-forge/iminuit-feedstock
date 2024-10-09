@@ -47,6 +47,7 @@ test:
   commands:
     - python -m pytest tests
     - cat $(python -c 'import sysconfig; print(sysconfig.get_paths()["platlib"])')/iminuit-*/WHEEL
+    - python -m pip debug --verbose
     - python -m pip check
 
 about:
