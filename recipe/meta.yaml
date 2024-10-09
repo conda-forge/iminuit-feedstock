@@ -47,7 +47,7 @@ test:
   commands:
     - python -m pytest tests
     - cat $(python -c 'import sysconfig; print(sysconfig.get_paths()["platlib"])')/iminuit-*/WHEEL
-    - pip check
+    - python -m pip check
 
 about:
   home: https://github.com/scikit-hep/iminuit
