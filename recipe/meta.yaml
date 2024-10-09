@@ -15,6 +15,7 @@ build:
   script:
     - export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}                  # [unix]
     - set CMAKE_BUILD_PARALLEL_LEVEL=%CPU_COUNT%                      # [win]
+    - python -m scikit_build_core.builder.wheel_tag
     - {{ PYTHON }} -m pip install . -vv -Ccmake.verbose=true -Clogging.level=DEBUG
 
 requirements:
