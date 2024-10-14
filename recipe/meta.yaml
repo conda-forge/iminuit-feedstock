@@ -15,10 +15,7 @@ build:
   script:
     - export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}                  # [unix]
     - set CMAKE_BUILD_PARALLEL_LEVEL=%CPU_COUNT%                      # [win]
-    - python -m scikit_build_core.builder.wheel_tag
-    - python -c "import packaging.tags; print(*packaging.tags.sys_tags())"
-    - exit 1
-    - {{ PYTHON }} -m pip install . -vv -Ccmake.verbose=true -Clogging.level=DEBUG
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -49,10 +46,7 @@ test:
     - iminuit
   commands:
     - python -m pytest tests
-    - python -c "import packaging.tags; print(*packaging.tags.sys_tags())"
-    - cat $(python -c 'import sysconfig; print(sysconfig.get_paths()["platlib"])')/iminuit-*/WHEEL
-    - python -m pip debug --verbose
-    - python -m pip check
+    - pip check
 
 about:
   home: https://github.com/scikit-hep/iminuit
