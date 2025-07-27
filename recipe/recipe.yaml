@@ -14,7 +14,6 @@ source:
 
 build:
   number: 1
-  skip: match(python, "<3.9")
   script:
     - if: unix
       then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
@@ -39,12 +38,9 @@ requirements:
     - pip
     - scikit-build-core
     - pybind11
-    - numpy
   run:
     - python
-    - ${{ pin_compatible('numpy') }}
-    - if: match(python, "<3.9")
-      then: typing_extensions
+    - numpy
 
 tests:
   - python:
@@ -53,6 +49,7 @@ tests:
   - files:
       source:
         - tests
+        - pyproject.toml
     requirements:
       run:
         - pytest
