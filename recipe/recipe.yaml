@@ -41,6 +41,7 @@ requirements:
     - pybind11
   run:
     - python
+    - numpy
     - ${{ pin_compatible('numpy') }}
     - if: match(python, "<3.9")
       then: typing_extensions
