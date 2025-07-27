@@ -11,7 +11,7 @@ Summary: Interactive Minimization Tools based on MINUIT
 
 Development: https://github.com/scikit-hep/iminuit
 
-Documentation: http://iminuit.readthedocs.io
+Documentation: http://iminuit.readthedocs.io/
 
 iminuit is designed from ground up to be fast, interactive and cython
 friendly. iminuit extract function signature very permissively starting
@@ -21,7 +21,6 @@ inspired heavily by PyMinuit and the status printout is inspired by ROOT
 Minuit. iminuit is mostly compatible with PyMinuit (with few exceptions).
 Existing PyMinuit code can be ported to iminuit by just changing the
 import statement.
-
 
 Current build status
 ====================
