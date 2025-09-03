@@ -37,7 +37,7 @@ requirements:
     - python
     - pip
     - scikit-build-core
-    - pybind11
+    - pybind11<3
   run:
     - python
     - numpy
