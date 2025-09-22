@@ -13,7 +13,7 @@ source:
   sha256: d5e004f1ffd83d2a076409fbf4a79691e7a17c9d73950bb63465af32e104de18
 
 build:
-  number: 2
+  number: 3
   script:
     - if: unix
       then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
@@ -37,7 +37,7 @@ requirements:
     - python
     - pip
     - scikit-build-core
-    - pybind11<3
+    - pybind11 >=3
   run:
     - python
     - numpy
