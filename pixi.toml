@@ -7,7 +7,7 @@
 
 [project]
 name = "iminuit-feedstock"
-version = "3.52.0"  # conda-smithy version used to generate this file
+version = "3.52.2"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/iminuit-feedstock"
 authors = ["@conda-forge/iminuit"]
 channels = ["conda-forge"]
