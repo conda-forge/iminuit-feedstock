@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: iminuit
-  version: "2.31.1"
+  version: "2.31.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: d5e004f1ffd83d2a076409fbf4a79691e7a17c9d73950bb63465af32e104de18
+  sha256: 771f81d6581c4f6aa085b9831e3a636ebe37a64c8873e19730efbf956bd6807a
 
 build:
-  number: 3
+  number: 0
   script:
     - if: unix
       then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
