@@ -13,7 +13,7 @@ source:
   sha256: ffb3aeb2de26c400d0aff7e2b7457f64cd609a494c45ee579effee81b1bc5d78
 
 build:
-  number: 0
+  number: 1
   script:
     - if: unix
       then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
