@@ -19,6 +19,12 @@ build:
       then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
     - if: win
       then: set CMAKE_BUILD_PARALLEL_LEVEL=%CPU_COUNT%
+    # TEMP debug for cross free-threaded
+    - if: unix and build_platform != target_platform
+      then:
+        - ${{ PYTHON }} -c "import sys, sysconfig; print(sys.executable, sys.base_exec_prefix, sysconfig.get_path('include'), sysconfig.get_config_var('Py_GIL_DISABLED'), sysconfig.get_config_var('ABIFLAGS'))"
+        - export SKBUILD_CMAKE_ARGS="--debug-find-pkg=Python"
+        - export SKBUILD_LOGGING_LEVEL=DEBUG
     - ${{ PYTHON }} -m pip install . -vv
 
 requirements:
