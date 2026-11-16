@@ -19,12 +19,9 @@ build:
       then: export CMAKE_BUILD_PARALLEL_LEVEL=${CPU_COUNT}
     - if: win
       then: set CMAKE_BUILD_PARALLEL_LEVEL=%CPU_COUNT%
-    # TEMP debug for cross free-threaded
+    # Cross FindPython with Interpreter (CMP0190 OLD) drops the "t" ABI
     - if: unix and build_platform != target_platform
-      then:
-        - ${{ PYTHON }} -c "import sys, sysconfig; print(sys.executable, sys.base_exec_prefix, sysconfig.get_path('include'), sysconfig.get_config_var('Py_GIL_DISABLED'), sysconfig.get_config_var('ABIFLAGS'))"
-        - export SKBUILD_CMAKE_ARGS="--debug-find-pkg=Python"
-        - export SKBUILD_LOGGING_LEVEL=DEBUG
+      then: export CMAKE_ARGS="${CMAKE_ARGS} -DPYBIND11_USE_CROSSCOMPILING=ON"
     - ${{ PYTHON }} -m pip install . -vv
 
 requirements:
